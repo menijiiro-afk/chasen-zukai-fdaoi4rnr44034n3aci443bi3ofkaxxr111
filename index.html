@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶せんOEM開発 事業構想図解</title>
+    <style>
+        :root {
+            --matcha: #4A5D23;
+            --matcha-light: #E8EBE3;
+            --matcha-dark: #2F3B16;
+            --bamboo: #D4C391;
+            --bamboo-light: #F9F8F4;
+            --accent: #8B3A3A;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --bg-color: #F4F5F0;
+        }
+
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border-top: 8px solid var(--matcha);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 50px 40px 30px;
+            background: linear-gradient(to bottom, var(--matcha-light), #FFFFFF);
+            border-bottom: 2px solid var(--bamboo-light);
+        }
+        .header h1 {
+            color: var(--matcha-dark);
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            letter-spacing: 0.05em;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Section */
+        .section {
+            padding: 40px;
+            border-bottom: 2px dashed var(--bamboo-light);
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: inline-block;
+            background-color: var(--matcha);
+            color: #FFFFFF;
+            padding: 8px 20px;
+            font-size: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--bamboo);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Cards & Boxes */
+        .card {
+            background-color: var(--bamboo-light);
+            border: 1px solid #EBE6D8;
+            border-radius: 8px;
+            padding: 25px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .card-title {
+            color: var(--matcha-dark);
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--bamboo);
+        }
+        .highlight-box {
+            background-color: #FFF6F5;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        /* Flow & Diagrams */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: var(--matcha-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .flow-item {
+            background: #FFF;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-weight: bold;
+            color: var(--matcha-dark);
+            text-align: center;
+        }
+        .flow-arrow {
+            color: var(--bamboo);
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #FFF;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #EBE6D8;
+            padding: 15px;
+            vertical-align: top;
+        }
+        .comparison-table th {
+            background-color: var(--matcha);
+            color: #FFF;
+            font-weight: bold;
+            text-align: left;
+            width: 20%;
+        }
+        .comparison-table td {
+            width: 40%;
+        }
+        .good-point { color: var(--matcha); font-weight: bold; }
+        .bad-point { color: var(--accent); font-weight: bold; }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            background: var(--bamboo);
+            color: var(--matcha-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* URL Links */
+        .link-box {
+            background-color: #F8F9FA;
+            border: 1px solid #E2E8F0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        a.url-text {
+            color: #2B6CB0;
+            text-decoration: underline;
+        }
+        a.url-text:hover {
+            color: #2C5282;
+        }
+
+        /* Download Button */
+        #download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--matcha);
+            color: #FFF;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(74, 93, 35, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        #download-btn:hover {
+            background-color: var(--matcha-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Conclusion Block */
+        .conclusion-block {
+            background-color: #FFF;
+            border: 3px solid var(--matcha);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .conclusion-title {
+            color: var(--matcha);
+            font-size: 24px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .section { padding: 30px 20px; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); margin: 10px 0; }
+            .comparison-table th, .comparison-table td { display: block; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header">
+            <h1>茶せんOEM開発 事業構想</h1>
+            <p>〜初心者でも本格的な抹茶を作れる世界の実現に向けて〜</p>
+        </header>
+
+        <!-- 1. 基礎知識 -->
+        <div class="section">
+            <h2 class="section-title">1. 茶道・抹茶の基礎知識</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">茶道と茶事</h3>
+                    <ul>
+                        <li><strong>茶道とは：</strong>お茶を通じた精神や文化全体（道・プロセス）のこと。</li>
+                        <li><strong>茶事とは：</strong>茶道における正式なお茶会（お客さんをもてなすイベント）のこと。</li>
+                        <li>※抹茶を点てるのは、この茶事の一部です。</li>
+                    </ul>
+                    <div class="link-box">
+                        <strong>茶事の一連の流れ（参考）：</strong><br>
+                        <a href="https://jogaku.co.jp/sadou/chaji-schedule.html" class="url-text" target="_blank">https://jogaku.co.jp/sadou/chaji-schedule.html</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">歴史と必須アイテム</h3>
+                    <p style="font-size: 14px; margin-top: 0;"><strong>始まり：</strong>1191年に臨済宗の栄西が中国（宋）から茶の種を持ち帰り伝えた。元は薬用や仏教的な儀式。<br>
+                    宇治で現在の製法が確立され、室町・戦国時代に千利休らによって文化として成熟。</p>
+                    <div class="highlight-box" style="margin-top: 10px; border-left-color: var(--matcha);">
+                        <strong>自宅で点てる最低限のアイテム5つ：</strong><br>
+                        抹茶の粉 / 茶碗 / 茶せん / 茶せんのくせ直し / 茶杓
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. イメージと魅力 -->
+        <div class="section">
+            <h2 class="section-title">2. 茶道のイメージと本当の魅力</h2>
+            <div class="grid-2">
+                <div class="card" style="border-top: 4px solid var(--accent);">
+                    <h3 class="card-title" style="color: var(--accent);">一般的なイメージ</h3>
+                    <p style="text-align: center; font-size: 18px; font-weight: bold; margin-top: 30px;">
+                        「礼儀や作法に厳しそう」
+                    </p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--matcha);">
+                    <h3 class="card-title">本当の魅力（非言語の最高のおもてなし）</h3>
+                    <ul>
+                        <li><strong>亭主：</strong>お客さんのことを考えた掛け軸、花、お菓子、茶碗、抹茶の味を数ヶ月に渡って考えて準備する。</li>
+                        <li><strong>お客さん：</strong>亭主がどんな想いで提供物を選んでくれたのかと亭主の気持ちを汲み取る。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 習う理由とターゲット -->
+        <div class="section">
+            <h2 class="section-title">3. 習う理由・きっかけと人物像</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">どんな人が習うのか</h3>
+                    <ul>
+                        <li><span class="badge">主婦/中年女性</span><br>圧倒的に多い。（主婦であることを忘れられるため）</li>
+                        <li><span class="badge">営業マン/料亭・旅館スタッフ</span><br>相手への想いやり、おもてなしを訓練したい。</li>
+                        <li><span class="badge">建築家</span><br>将来茶室を作りたい。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">習う理由・きっかけ</h3>
+                    <ul style="font-size: 14px;">
+                        <li><strong>マインドフルネス / 無になれるから：</strong>静かな閉ざされた茶室で、作法に集中するため雑念が消える。（瞑想・坐禅・ヨガに近い）</li>
+                        <li><strong>所作が綺麗になるから（女性）：</strong>細かい作法に慣れることで日常生活の所作も自然と綺麗になり、品のある女性と思われたい。</li>
+                        <li><strong>道具が好き（男性）：</strong>特に焼き物が好きで使ってみたい。</li>
+                        <li>母親・祖母から勧められたから。 / 仏教と関連があるから。</li>
+                        <li>抹茶が好きで、自分で点てられるようになりたいから。</li>
+                        <li>相手を思いやる訓練ができるから。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 自宅で点てる理由と美味しさ -->
+        <div class="section">
+            <h2 class="section-title">4. 自宅での抹茶づくりと「美味しさ」の定義</h2>
+            
+            <div class="grid-2" style="margin-bottom: 20px;">
+                <div class="card">
+                    <h3 class="card-title">なぜ自宅で茶せんを使うのか</h3>
+                    <ul>
+                        <li>お茶会や専門店でその場で点てた抹茶が美味しく、自宅でも作ってみたい。</li>
+                        <li>自分で点てるプロセス自体が楽しい。</li>
+                        <li>自分で良いものが作れるという自己肯定感。（DIYや自炊に近い）</li>
+                        <li><strong>きめ細かい泡が作れて、口当たりが良い。</strong>（電動ミキサー等だと泡が粗くダマになりやすい）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">美味しいと思われる抹茶とは</h3>
+                    <div class="highlight-box">
+                        <strong>「きめ細かい泡が多くある抹茶」</strong>
+                    </div>
+                    <p>きめ細かい泡が多くあると、飲んだ時にクリーミーで舌触りが良い。<br>
+                    このクリーミーさが抹茶の苦味とマッチする。また、頑張って点てた甲斐があるという特別感がある。</p>
+                </div>
+            </div>
+
+            <div class="card" style="background-color: var(--matcha-light); border: none;">
+                <h3 class="card-title">きめ細かい泡を作るコツ</h3>
+                <ul style="column-count: 2; column-gap: 40px;">
+                    <li>ちゃこしを使用すること</li>
+                    <li>お湯の温度が70、80度程度であること</li>
+                    <li>抹茶の粉とお湯の量（70mlのお湯に対し、抹茶2g程度）</li>
+                    <li><strong>茶せんの種類（穂数、しなり、柄の太さが影響）</strong></li>
+                    <li>点てるスピードを早くすること（茶碗が深くないと飛び散る）</li>
+                </ul>
+                <div class="flow-diagram">
+                    <div style="font-weight: bold; color: var(--matcha-dark);">最重要課題</div>
+                    <div class="flow-arrow">▶︎</div>
+                    <div class="flow-item" style="border: 2px solid var(--matcha);">
+                        誰でも本格的な美味しい抹茶が作れる茶せんとは？<br>
+                        <span style="color: var(--accent); font-size: 18px;">＝ 初心者でもきめ細かい泡を多く作れる茶せん</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 茶せんの種類 -->
+        <div class="section">
+            <h2 class="section-title">5. きめ細かい泡を作れる茶せんのジレンマ</h2>
+            
+            <div class="card">
+                <p style="font-size: 18px; text-align: center; font-weight: bold;">
+                    結論：穂数が最も多い「百二十本立」が最もきめ細かい泡を作れる
+                </p>
+                <p style="text-align: center; color: var(--text-muted);">
+                    茶道経験者は穂数が少ない茶せんでも泡を作れるが、初心者は穂数が多い茶せんがおすすめ。
+                </p>
+                
+                <div class="link-box" style="text-align: center;">
+                    <strong>※茶せんの種類の参考資料</strong><br>
+                    <a href="https://docs.google.com/spreadsheets/d/1JvCMJhr_BhCMNf2B68mnFbutHtnQ2-OIvED3D3Snruw/edit?gid=1112982196#gid=1112982196&range=A1" class="url-text" target="_blank">https://docs.google.com/spreadsheets/d/1JvCMJhr_BhCMNf2B68mnFbutHtnQ2-OIvED3D3Snruw/edit?gid=1112982196#gid=1112982196&range=A1</a>
+                </div>
+
+                <div class="grid-2" style="margin-top: 20px;">
+                    <div class="highlight-box" style="border-left-color: var(--accent); margin-top: 0;">
+                        <strong>【竹製】百二十本立のデメリット</strong><br>
+                        穂先が細いため劣化しやすい。さらに柄が太くなってしまうため、手首のスナップが少しききづらい。
+                    </div>
+                    <div class="highlight-box" style="border-left-color: var(--bamboo); margin-top: 0;">
+                        <strong>従来の初心者への妥協案</strong><br>
+                        そのため、穂数がある程度多く、穂先も細すぎない「百本立」か「八十本立」が初心者におすすめされていた。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 素材比較 -->
+        <div class="section">
+            <h2 class="section-title">6. 市場商品の素材比較</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>素材</th>
+                    <th>メリット</th>
+                    <th>デメリット・現状の課題</th>
+                </tr>
+                <tr>
+                    <td style="background-color: var(--bamboo-light); font-weight: bold;">竹製の茶せん</td>
+                    <td>
+                        <span class="good-point">◎</span> 穂先が細く、しなりがきくので、泡が点ちやすい。
+                    </td>
+                    <td>
+                        <span class="bad-point">×</span> 使用するたびに、穂先の折れ・切れ、ささくれ、黒ずみなどが発生し、劣化しやすい。<br>
+                        <span class="bad-point">×</span> 製造時の穂先の不揃いや竹の傷みなど品質の安定が難しい。<br><br>
+                        <strong style="color: var(--accent);">【重要課題】</strong><br>
+                        茶道経験者は消耗品と認識しているが、初心者は消耗品と理解していない場合が多い。Amazonレビューが3.8程度であり、評価を下げる大きな要因がこの品質と劣化のしやすさ。<br>
+                        <div class="link-box">
+                            <a href="https://amzn.asia/d/0d2tMas5" class="url-text" target="_blank">https://amzn.asia/d/0d2tMas5</a><br>
+                            <a href="https://amzn.asia/d/09SgcxSE" class="url-text" target="_blank">https://amzn.asia/d/09SgcxSE</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #F8F9FA; font-weight: bold;">ポリプロピレンの茶せん</td>
+                    <td>
+                        <span class="good-point">◎</span> 耐久性があり、長持ちする。<br>
+                        <span class="good-point">◎</span> 分解して洗えるので清潔。
+                    </td>
+                    <td>
+                        <span class="bad-point">×</span> 穂先が竹製より少し太く、しなりが効きづらいので、泡がたてづらい。<br>
+                        ※ただ、竹製より穂先の長さが短い仕様のため、それが影響している可能性あり。<br>
+                        <div class="link-box">
+                            <a href="https://amzn.asia/d/020Dvc8V" class="url-text" target="_blank">https://amzn.asia/d/020Dvc8V</a><br>
+                            <a href="https://amzn.asia/d/04Mx244S" class="url-text" target="_blank">https://amzn.asia/d/04Mx244S</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 7. 自社商品 -->
+        <div class="section">
+            <h2 class="section-title">7. 自社商品の仕様と解決策</h2>
+            
+            <div class="conclusion-block">
+                <h3 class="conclusion-title">結論：ポリプロピレンの「百二十本立」を作る</h3>
+                
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: var(--matcha-dark); border-bottom: 2px solid var(--matcha-light); padding-bottom: 5px;">① 泡を作りやすい仕様にする</h4>
+                        <ul>
+                            <li><strong>百二十本立を採用：</strong>穂数が多いと泡が作りやすい。</li>
+                            <li><strong>柄の太さを百本立・八十本立程度にする：</strong>握りやすくする。（竹で百二十本立を作る場合、穂数を増やすために太目の竹を使う必要があり細くするのは非現実的だが、ポリプロピレンなら実現できる可能性あり。）</li>
+                            <li><strong>柄に親指を入れる窪みを作る：</strong>グリップを安定させ、振りやすくする。</li>
+                            <li><strong>穂先の長さを調整：</strong>穂先の長さで泡立ちが変わる可能性がある。（今の仮説は長い方が泡だししやすい。）数パターンサンプルを作る。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--matcha-dark); border-bottom: 2px solid var(--matcha-light); padding-bottom: 5px;">② 劣化しづらくする</h4>
+                        <ul>
+                            <li>竹の百二十本立は劣化しやすいため、<strong>ポリプロピレンを採用する。</strong><br>
+                            （※他社のポリプロピレンは100本）</li>
+                        </ul>
+
+                        <h4 style="color: var(--matcha-dark); border-bottom: 2px solid var(--matcha-light); padding-bottom: 5px; margin-top: 25px;">③ 色合い</h4>
+                        <ul>
+                            <li>竹製と同じ<strong>薄茶色</strong>を採用し、世界観を損なわない。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. 松岡さんへの相談事項 -->
+        <div class="section">
+            <h2 class="section-title" style="background-color: var(--text-main); border-left-color: var(--accent);">8. 松岡さんに相談したいこと</h2>
+            <div class="card" style="background-color: #FFF; border: 2px solid var(--text-main);">
+                <ol style="font-size: 18px; font-weight: bold; margin-bottom: 0;">
+                    <li style="margin-bottom: 20px;">
+                        商品開発の仕様の方向性が上記で良いかどうか。
+                    </li>
+                    <li>
+                        「誰でも本格的な抹茶を作れる」というコンセプトに合わせて、どんな世界観の画像を作成するか。
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ダウンロード用ボタン -->
+    <button id="download-btn" onclick="downloadHTML()">HTMLをダウンロード</button>
+
+    <script>
+        function downloadHTML() {
+            // HTML全体をクローン
+            const htmlNode = document.documentElement.cloneNode(true);
+            
+            // クローンしたHTMLからダウンロードボタンを削除
+            const btn = htmlNode.querySelector('#download-btn');
+            if (btn) {
+                btn.remove();
+            }
+            
+            // HTML文字列を構築
+            const htmlString = '<!DOCTYPE html>\n' + htmlNode.outerHTML;
+            
+            // Blobを作成してダウンロードリンクを発火
+            const blob = new Blob([htmlString], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'chasen_oem_concept.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
